@@ -2,8 +2,8 @@ import { createDbConnection } from "./db.js";
 
 const db = createDbConnection();
 
-export const insertRow = (name, color, weight) => {
-    // const [name, color, weight] = process.argv.slice(2);
+const insertRow = () => {
+    const [name, color, weight] = process.argv.slice(2);
     db.run(
         `INSERT INTO sharks (name, color, weight) VALUES (?, ?, ?)`,
         [name, color, weight],
@@ -15,5 +15,3 @@ export const insertRow = (name, color, weight) => {
         }
     );
 }
-
-// insertRow();
