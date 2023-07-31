@@ -1,9 +1,10 @@
+import fs from 'fs'
 import sqlite3 from "sqlite3";
 
 const filepath = './fish.db';
 
 const createTable = (db) => {
-    db.exec(`
+  db.exec(`
     CREATE TABLE sharks
     (
       ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -12,17 +13,22 @@ const createTable = (db) => {
       weight INTEGER NOT NULL
     );
   `);
-  }
+}
 
 export const createDbConnection = () => {
+  if (fs.existsSync(filepath)) {
+    return new sqlite3.Database(filepath);
+  } else {
     const db = new sqlite3.Database(filepath, (err) => {
-        if (err) {
-            throw new Error(err.message);
-        }
-        createTable(db);
+      if (err) {
+        throw new Error(err.message);
+      }
+      createTable(db);
     });
     console.log('connection with SQLite has been esteblished');
     return db;
+  }
+
 }
 
-createDbConnection();
+// createDbConnection();
