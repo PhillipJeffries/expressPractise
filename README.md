@@ -6,5 +6,5 @@ Step 4 — Retrieving Data from the SQLite Database
 
 https://geshan.com.np/blog/2021/10/nodejs-sqlite/
 
-video tutorial
+video tutorial. Now on video 3
 https://www.youtube.com/watch?v=EbxwTjD8HOA&list=PL84tBTIF9oqIka86oSQwNoziQ9ONTSXu1&ab_channel=TechEndeavor
