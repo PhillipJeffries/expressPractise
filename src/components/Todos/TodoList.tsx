@@ -1,19 +1,16 @@
 import * as React from "react";
 import Todo from "./Todo";
+import type { TodoType } from ".";
 
 import './todoList.scss'
 
-const todos = [
-  {id: 1, message: 'wakeUp'},
-  {id: 2, message: 'cleanTeeth'},
-  {id: 3, message: 'goWork'},
-]
 
-const TodoList: React.FC = () => {
+
+const TodoList: React.FC<{todos: TodoType[]}> = ({todos}) => {
   return (
     <div className="todoList">
-      {todos.map(todo => {
-        return <Todo {...todo} key={todo.id}/>
+      {todos.map((todo: TodoType) => {
+        return <Todo todo={todo.message} key={todo.id}/>
       })}
     </div>);
 };

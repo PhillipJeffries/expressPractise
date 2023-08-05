@@ -1,12 +1,13 @@
 import * as React from "react";
 // import img from "./assets/img/postcard.png";
+// import type { Todos } from ".";
 
 // import './app.scss'
 
-const Todo: React.FC<{id:number; message: string}> = (todo) => {
+const Todo: React.FC<{todo: string}> = ({todo}) => {
   return (
     <>
-      <h3>{todo.message}</h3>
+      <h3>{todo}</h3>
     </>);
 };
 
