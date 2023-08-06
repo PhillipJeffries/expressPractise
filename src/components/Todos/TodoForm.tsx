@@ -1,23 +1,30 @@
 import * as React from "react";
 import { useState } from "react";
+import { TodoType } from ".";
 // import img from "./assets/img/postcard.png";
 
 // import './app.scss'
 
-const TodoForm: React.FC = () => {
-  const [value, setValue] = useState('');
+const TodoForm: React.FC<{todos: TodoType[], setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>}> = ({todos, setTodos}) => {
+  const [value, setValue] = useState({message: ''});
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue({message: e.target.value})
+  }
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(e)
+    setValue({message: ''});
+    setTodos([...todos, {id: todos.length+1, message: value.message}])
   }
   return (
     <form onSubmit={(e)=>handleSubmit(e)}>
       <input
         type="text"
         name="todo"
-        value={value}
+        value={value.message}
         placeholder="Enter your Todo item"
-        onChange={(e)=>setValue(e.target.value)}
+        onChange={handleChange}
       />
       <button type="submit">+</button>
     </form>);
