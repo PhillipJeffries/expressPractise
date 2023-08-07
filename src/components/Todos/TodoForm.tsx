@@ -15,8 +15,9 @@ const TodoForm: React.FC<{todos: TodoType[], setTodos: React.Dispatch<React.SetS
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setValue({message: ''});
-    setTodos([...todos, {id: todos.length+1, message: value.message}])
+    setTodos([{id: todos.length+1, message: value.message}, ...todos])
   }
+  
   return (
     <form onSubmit={(e)=>handleSubmit(e)}>
       <input

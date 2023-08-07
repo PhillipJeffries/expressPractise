@@ -6,11 +6,11 @@ import './todoList.scss'
 
 
 
-const TodoList: React.FC<{todos: TodoType[]}> = ({todos}) => {
+const TodoList: React.FC<{todos: TodoType[], deleteHandler: Function, updateHandler: Function}> = ({todos, deleteHandler, updateHandler}) => {
   return (
     <div className="todoList">
       {todos.map((todo: TodoType) => {
-        return <Todo todo={todo.message} key={todo.id}/>
+        return <Todo todo={todo} deleteHandler={deleteHandler} updateHandler={updateHandler} key={todo.id}/>
       })}
     </div>);
 };
