@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 
-const testData = require('../testData');
+const db = require('./dbConfig');
 
 const server = express();
 
@@ -14,8 +14,16 @@ server.get('/', (req, res) => {
   res.send('<h1>Hello World</h1>')
 });
 
-server.get('/todos', (req, res) => {
-  res.json(testData);
+server.get('/todos', async (req, res) => {
+  //GET all todos
+  try {
+    const todos = await db('todos');
+    res.json(todos);
+  } catch(err) {
+    console.log(err);
+  }
+
+  
 });
 
 server.post('/todos', (req, res) => {
